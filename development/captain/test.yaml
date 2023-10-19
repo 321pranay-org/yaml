@@ -17,7 +17,7 @@ resources:
             - POST
           hosts: null
           paths:
-            - /abc
+            - /abc123
           strip_path: false
           preserve_host: false
           plugins:
