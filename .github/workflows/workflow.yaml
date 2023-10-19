@@ -4,9 +4,15 @@ on:
     branches: [ main ]
 
 jobs:
-  sayHelloWorld:
+  prReview:
     runs-on: ubuntu-latest
     steps:
-      - uses: probot/example-github-action@v1
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Run script
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+          TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+        run: |
+          node .github/actions-scripts/app.js
