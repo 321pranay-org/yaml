@@ -67,7 +67,7 @@ func main(){
 
 
 	commentBody := "This is first automated comment"
-	commentPath := "development/captain/test.yaml"
+	commentPath := "README.md"
 	commitId := os.Getenv("GITHUB_SHA")
 	subjectType := "file"
 	comment := &PullRequestComment{
@@ -123,8 +123,8 @@ func createComment(comment *PullRequestComment) error{
 		return err
 	}
 	// TODO: remove custom Accept headers when their respective API fully launches.
-	acceptHeaders := []string{"application/vnd.github.squirrel-girl-preview", "application/vnd.github.comfort-fade-preview+json"}
-	req.Header.Set("Accept", strings.Join(acceptHeaders, ", "))
+	// acceptHeaders := []string{"application/vnd.github+json"}
+	req.Header.Set("Accept", "application/vnd.github+json")
 
 	c := new(PullRequestComment)
 	_, err = client.Do(context.Background(), req, c)
