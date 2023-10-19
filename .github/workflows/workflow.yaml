@@ -9,13 +9,13 @@ jobs:
   sayHelloWorld:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v3
         ref: 'main'
         path: 'main'
         with:
           fetch-depth: 0
-      - name: Checkout
+      - name: Checkout branch
         uses: actions/checkout@v3
         path: 'current'
         with:
