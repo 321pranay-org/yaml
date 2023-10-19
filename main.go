@@ -14,6 +14,8 @@ import (
 	git "gopkg.in/src-d/go-git.v4"
 	"gopkg.in/src-d/go-git.v4/plumbing"
 	"gopkg.in/yaml.v3"
+	"github.com/google/go-cmp/cmp"
+
 )
 
 func main(){
@@ -59,6 +61,10 @@ func main(){
 	kongConfigBranch := getFromFileSystem("branch/development/captain")
 
 	fmt.Println(kongConfigBranch)
+
+	diff := cmp.Diff(kongConfigMaster, kongConfigBranch)
+
+	fmt.Println(diff)
 }
 
 
