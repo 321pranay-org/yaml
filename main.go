@@ -2,28 +2,31 @@ package main
 
 import (
 	"fmt"
-	"os"
-	"path/filepath"
 	"io/ioutil"
 	"log"
-
+	"os"
+	"path/filepath"
+	"strings"
 
 	// "github.com/google/go-github/v56/github"
 	// git "github.com/go-git/go-git/v5"
 	// "gopkg.in/src-d/go-git.v4/plumbing"
-	"gopkg.in/yaml.v3"
 	git "gopkg.in/src-d/go-git.v4"
 	"gopkg.in/src-d/go-git.v4/plumbing"
-
+	"gopkg.in/yaml.v3"
 )
 
 func main(){
 
 	// client := github.NewClient(nil).WithAuthToken(os.Getenv("TOKEN"))
 
+	fmt.Println(os.Getenv("GITHUB_SERVER_URL"))
+	fmt.Println(os.Getenv("GITHUB_REPOSITORY"))
+
 	url := os.Getenv("GITHUB_SERVER_URL") + "/" + os.Getenv("GITHUB_REPOSITORY")
+	
 	_, err := git.PlainClone("master", false, &git.CloneOptions{
-		URL:      url,
+		URL:      strings.Replace(url, "https://", "https://" + os.Getenv("TOKEN") + "@", 1),
 		Progress: os.Stdout,
 	})
 
@@ -37,10 +40,12 @@ func main(){
 
 	fmt.Println(kongConfigMaster)
 
+	fmt.Println(os.Getenv("GITHUB_REF"))
+
 	githubRef := os.Getenv("GITHUB_REF")
 
 	_, err2 := git.PlainClone("branch", false, &git.CloneOptions{
-		URL:      url,
+		URL:      strings.Replace(url, "https://", "https://" + os.Getenv("TOKEN") + "@", 1),
 		Progress: os.Stdout,
 		ReferenceName: plumbing.ReferenceName(fmt.Sprintf(githubRef)),
 	})
