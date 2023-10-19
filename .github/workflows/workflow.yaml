@@ -28,4 +28,4 @@ jobs:
         env:
           TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
         run: |
-          go version
+          go run main.go
