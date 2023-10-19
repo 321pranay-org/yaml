@@ -15,11 +15,10 @@ jobs:
       #   path: 'main'
       #   with:
       #     fetch-depth: 0
-      # - name: Checkout branch
-      #   uses: actions/checkout@v3
-      #   path: 'current'
-      #   with:
-      #     fetch-depth: 0
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
