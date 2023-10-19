@@ -34,9 +34,11 @@ func main(){
 		fmt.Println(err)
 	}
 
-	currDir, _ := os.Getwd()
+	// currDir, _ := os.Getwd()
 
-	kongConfigMaster := getFromFileSystem(currDir + "/master/captain")
+	fmt.Println("********************")
+
+	kongConfigMaster := getFromFileSystem("master/development/captain")
 
 	fmt.Println(kongConfigMaster)
 
@@ -54,7 +56,7 @@ func main(){
 		fmt.Println(err)
 	}
 
-	kongConfigBranch := getFromFileSystem(currDir + "/branch/captain")
+	kongConfigBranch := getFromFileSystem("branch/development/captain")
 
 	fmt.Println(kongConfigBranch)
 }
