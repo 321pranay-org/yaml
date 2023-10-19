@@ -42,9 +42,9 @@ func main(){
 
 	fmt.Println(kongConfigMaster)
 
-	fmt.Println(os.Getenv("GITHUB_REF_NAME"))
+	fmt.Println(os.Getenv("GITHUB_HEAD_REF"))
 
-	githubRef := os.Getenv("GITHUB_REF_NAME")
+	githubRef := os.Getenv("GITHUB_HEAD_REF")
 
 	_, err2 := git.PlainClone("branch", false, &git.CloneOptions{
 		URL:      strings.Replace(url, "https://", "https://" + os.Getenv("TOKEN") + "@", 1),
