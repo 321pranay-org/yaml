@@ -42,14 +42,14 @@ func main(){
 
 	fmt.Println(kongConfigMaster)
 
-	fmt.Println(os.Getenv("GITHUB_REF"))
+	fmt.Println(os.Getenv("GITHUB_REF_NAME"))
 
-	githubRef := os.Getenv("GITHUB_REF")
+	githubRef := os.Getenv("GITHUB_REF_NAME")
 
 	_, err2 := git.PlainClone("branch", false, &git.CloneOptions{
 		URL:      strings.Replace(url, "https://", "https://" + os.Getenv("TOKEN") + "@", 1),
 		Progress: os.Stdout,
-		ReferenceName: plumbing.ReferenceName(fmt.Sprintf(githubRef)),
+		ReferenceName: plumbing.ReferenceName(fmt.Sprintf("refs/heads/%s", githubRef)),
 	})
 
 	if err2 != nil{
