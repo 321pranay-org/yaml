@@ -115,7 +115,7 @@ func createComment(comment *PullRequestComment) error{
 
 	client := github.NewClient(nil).WithAuthToken(os.Getenv("TOKEN"))
 
-	u := fmt.Sprintf("repos/%v/%v/pulls/%d/comments", os.Getenv("GITHUB_REPOSITORY_OWNER"), os.Getenv("GITHUB_REPOSITORY"), strings.Split(os.Getenv("GITHUB_REF"),"/")[2])
+	u := fmt.Sprintf("repos/%v/%v/pulls/%v/comments", os.Getenv("GITHUB_REPOSITORY_OWNER"), os.Getenv("GITHUB_REPOSITORY"), strings.Split(os.Getenv("GITHUB_REF"),"/")[2])
 	req, err := client.NewRequest("POST", u, comment)
 	if err != nil {
 		return err
