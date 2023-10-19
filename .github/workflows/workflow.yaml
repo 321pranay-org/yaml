@@ -1,17 +1,25 @@
 name: PR review
 on:
+  push:
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
 jobs:
-  prReview:
+  sayHelloWorld:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        ref: 'main'
+        path: 'main'
         with:
           fetch-depth: 0
-      - run: npm install
+      - name: Checkout
+        uses: actions/checkout@v3
+        path: 'current'
+        with:
+          fetch-depth: 0
       - name: Run script
         env:
           TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
