@@ -118,7 +118,7 @@ func createComment(comment *PullRequestComment) error{
 	u := fmt.Sprintf("repos/%v/%v/pulls/%d/comments", os.Getenv("GITHUB_REPOSITORY_OWNER"), os.Getenv("GITHUB_REPOSITORY"), strings.Split(os.Getenv("GITHUB_REF"),"/")[2])
 	req, err := client.NewRequest("POST", u, comment)
 	if err != nil {
-		return nil, nil, err
+		return err
 	}
 	// TODO: remove custom Accept headers when their respective API fully launches.
 	acceptHeaders := []string{"application/vnd.github.squirrel-girl-preview", "application/vnd.github.comfort-fade-preview+json"}
