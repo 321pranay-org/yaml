@@ -9,19 +9,23 @@ jobs:
   sayHelloWorld:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
-        uses: actions/checkout@v3
-        ref: 'main'
-        path: 'main'
-        with:
-          fetch-depth: 0
+      # - name: Checkout main
+      #   uses: actions/checkout@v3
+      #   ref: 'main'
+      #   path: 'main'
+      #   with:
+      #     fetch-depth: 0
       - name: Checkout branch
         uses: actions/checkout@v3
         path: 'current'
         with:
           fetch-depth: 0
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: 1.18
       - name: Run script
         env:
           TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
         run: |
-          node .github/actions-scripts/app.js
+          go version
