@@ -1,4 +1,4 @@
-]module kong-review
+module kong-review
 
 go 1.20
 
