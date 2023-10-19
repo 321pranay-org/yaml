@@ -69,10 +69,12 @@ func main(){
 	commentBody := "This is first automated comment"
 	commentPath := "development/captain/test.yaml"
 	commitId := os.Getenv("GITHUB_SHA")
+	subjectType := "file"
 	comment := &PullRequestComment{
 		Body: &commentBody,
 		Path: &commentPath,
 		CommitID: &commitId,
+		SubjectType: &subjectType,
 	}
 
 	err = createComment(comment)
