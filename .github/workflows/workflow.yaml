@@ -33,4 +33,4 @@ jobs:
         env:
           TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
         run: |
-          go run main.go
+          cd main && go run main.go
