@@ -18,7 +18,7 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v4
         with:
-          ref: test7
+          ref: ${{ GITHUB_REF_NAME }}
           path: branch
       - name: Set up Go
         uses: actions/setup-go@v4
