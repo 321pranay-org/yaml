@@ -27,5 +27,6 @@ jobs:
       - name: Run script
         env:
           TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+          PR_NUMBER: ${{ github.event.number }}
         run: |
           cd main && go run main.go
