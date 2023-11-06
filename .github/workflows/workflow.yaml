@@ -1,32 +1,27 @@
 name: PR review
+
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  pull_request_target:
+    branches: 
+      - main
 
 jobs:
-  sayHelloWorld:
+  pr-review:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout master
         uses: actions/checkout@v4
         with:
           ref: main
-          path: main
-
+          path: master
       - name: Checkout branch
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
           path: branch
-      - name: Set up Go
-        uses: actions/setup-go@v4
-        with:
-          go-version: 1.18
-      - name: Run script
+      - name: kong pr review
+        id: kong-pr-review
+        uses: actions/kong-pr-review@v1
         env:
-          TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
-          PR_NUMBER: ${{ github.event.number }}
-        run: |
-          cd main && go run main.go
+          TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.number }} 
