@@ -23,7 +23,7 @@ func main(){
 
 	fmt.Println(os.Getenv("GITHUB_SERVER_URL"))
 	fmt.Println(os.Getenv("GITHUB_REPOSITORY"))
-	fmt.Println(os.Getenv("PR_NUMBER"))
+	fmt.Println(os.Getenv("PR_NUMBERR"))
 
 	url := os.Getenv("GITHUB_SERVER_URL") + "/" + os.Getenv("GITHUB_REPOSITORY")
 	
