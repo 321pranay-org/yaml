@@ -57,6 +57,7 @@ func main(){
 	if err2 != nil{
 		fmt.Println(err2)
 	}
+	
 
 	kongConfigBranch := getFromFileSystem("branch/development/captain")
 
