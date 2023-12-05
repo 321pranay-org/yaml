@@ -21,7 +21,7 @@ jobs:
           path: branch
       - name: kong pr review
         id: kong-pr-review
-        uses: 321pranay-org/kong-pr-review@v1
+        uses: 321pranay-org/kong-pr-review@v2
         env:
           TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.number }} 
