@@ -40,6 +40,7 @@ func main(){
 	fmt.Println("********************")
 
 	kongConfigMaster := getFromFileSystem("master/development/captain")
+	
 
 	fmt.Println(kongConfigMaster)
 
