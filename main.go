@@ -19,7 +19,6 @@ import (
 )
 
 func main(){
-
 	fmt.Println(os.Getenv("GITHUB_SERVER_URL"))
 	fmt.Println(os.Getenv("GITHUB_REPOSITORY"))
 	fmt.Println(os.Getenv("PR_NUMBER"))
